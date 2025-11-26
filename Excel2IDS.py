@@ -88,6 +88,7 @@ def excel2ids(spreadsheet, ids_path):
             for row in range(start_row, end_row):
                 if sheet[f'{s.REQ_INCLUDE}{row}'].value:
                     cell_value = sheet.cell(row=row, column=col).value
+                    instructions = None
                     if not isempty(cell_value):
                         if cell_value.strip().upper() == "X":
                             instructions = sheet[f'{s.REQ_INSTRUCTIONS}{row}'].value
@@ -220,6 +221,7 @@ def excel2ids(spreadsheet, ids_path):
                                 facet = ids.Material(value=cell_value, cardinality=process_value(sheet[f'{s.REQ_CARDINAL}{row}'].value))
                             
                             if facet:
+                                print(f"\nColuna:{col}-{column_letter} Linha:{row}  Valor de facet:{facet}\n")
                                 if instructions:
                                     facet.instructions=instructions
                                 requirements.append(facet)
