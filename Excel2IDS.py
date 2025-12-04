@@ -79,11 +79,11 @@ def excel2ids(spreadsheet, ids_path):
             
             # add partOf
             if not isempty(sheet[f'{column_letter}{s.APL_PARTOF}'].value):
-                partof = ids.partOf(
+                partof = ids.PartOf(
                     name=process_value(sheet[f'{column_letter}{s.APL_PARTOF}'].value),
                     relation=process_value(sheet[f'{column_letter}{s.APL_PARTOF_REL}'].value)
                 )
-                applicability.append(material)
+                applicability.append(partof)
             
             # add material
             if not isempty(sheet[f'{column_letter}{s.APL_MATERIAL}'].value):
