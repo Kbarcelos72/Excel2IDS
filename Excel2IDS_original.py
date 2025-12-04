@@ -76,15 +76,6 @@ def excel2ids(spreadsheet, ids_path):
                     value=process_value(sheet[f'{column_letter}{s.APL_AVALUE}'].value)
                 )
                 applicability.append(attribute)
-            
-            # add partOf
-            if not isempty(sheet[f'{column_letter}{s.APL_PARTOF}'].value):
-                partof = ids.partOf(
-                    name=process_value(sheet[f'{column_letter}{s.APL_PARTOF}'].value),
-                    relation=process_value(sheet[f'{column_letter}{s.APL_PARTOF_REL}'].value)
-                )
-                applicability.append(material)
-            
             # add material
             if not isempty(sheet[f'{column_letter}{s.APL_MATERIAL}'].value):
                 material = ids.Material(
