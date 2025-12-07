@@ -10,11 +10,11 @@
         <milestone>LOD400</milestone>
     </info>
     <specifications>
-        <specification name="Unidade habitacional deve ter área útil definida" ifcVersion="IFC4X3_ADD2" identifier="IDS 013" description="Área útil da UH deve estar quantificad" instructions="Área útil da UH deve estar quantificad">
+        <specification name="Unidade habitacional deve ter área útil definida" ifcVersion="IFC4X3_ADD2" identifier="IDS 013" description="Área útil da UH deve estar quantificada" instructions="Área útil da UH deve estar quantificada">
             <applicability minOccurs="1" maxOccurs="unbounded">
                 <entity>
                     <name>
-                        <simpleValue>ifcspace</simpleValue>
+                        <simpleValue>ifcSpace</simpleValue>
                     </name>
                 </entity>
                 <attribute>
@@ -23,7 +23,7 @@
                     </name>
                     <value>
                         <xs:restriction base="xs:string">
-                            <xs:pattern value=".*(Apartamento|Casa Sobreposta|UH|Casa|Unidade habitacional).*" />
+                            <xs:pattern value=".*([Aa]partamento|[Cc]asa [Ss]obreposta|[Uu][Hh]|[Cc]asa|[Uu]nidade [Hh]abitacional).*" />
                         </xs:restriction>
                     </value>
                 </attribute>
@@ -84,7 +84,7 @@
                     </name>
                     <value>
                         <xs:restriction base="xs:string">
-                            <xs:pattern value=".*(Apartamento|Casa Sobreposta|Unidade autônoma|Habitação coletiva|Multifamiliar).*" />
+                            <xs:pattern value=".*([Aa]partamento|[Cc]asa [Ss]obreposta|[Uu]nidade [&lt;a&gt;]ut[oô]noma|[Mm]ultifamiliar).*" />
                         </xs:restriction>
                     </value>
                 </attribute>
@@ -100,35 +100,6 @@
                     <value>
                         <simpleValue>41.5</simpleValue>
                     </value>
-                </property>
-            </requirements>
-        </specification>
-        <specification name="Espaços habitáveis devem ter pé-direito definido" ifcVersion="IFC4X3_ADD2" identifier="IDS014" description="Espaços habitáveis devem ter pé-direito definido" instructions="Espaços habitáveis devem ter pé-direito definido">
-            <applicability minOccurs="1" maxOccurs="unbounded">
-                <entity>
-                    <name>
-                        <simpleValue>IFCSPACE</simpleValue>
-                    </name>
-                </entity>
-                <attribute>
-                    <name>
-                        <simpleValue>LongName</simpleValue>
-                    </name>
-                    <value>
-                        <xs:restriction base="xs:string">
-                            <xs:pattern value=".*([Ss]ala|[Ss]ala [Ee]star|[Ss]ala [Jj]antar|[Qq]uarto de [Cc]asal||[Qq]uarto [Ss]olteiro|[Dd]ormit[óo]rio||[Dd]ormit[óo]rio de  [Cc]asal|[Cc]ozinha|[Bb]anheiro|[ÁáAa]rea de [Ss]ervi[çc]o).*" />
-                        </xs:restriction>
-                    </value>
-                </attribute>
-            </applicability>
-            <requirements>
-                <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito existente">
-                    <propertySet>
-                        <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>FinishCeilingHeight</simpleValue>
-                    </baseName>
                 </property>
             </requirements>
         </specification>
@@ -151,61 +122,6 @@
                 </attribute>
             </applicability>
             <requirements>
-                <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito mínimo 2,55m (cômodos em geral)">
-                    <propertySet>
-                        <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>FinishCeilingHeight</simpleValue>
-                    </baseName>
-                    <value>
-                        <simpleValue>2.55</simpleValue>
-                    </value>
-                </property>
-                <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito mínimo 2,30m (banheiros)">
-                    <propertySet>
-                        <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
-                    </propertySet>
-                    <baseName>
-                        <simpleValue>FinishCeilingHeight</simpleValue>
-                    </baseName>
-                    <value>
-                        <simpleValue>2.3</simpleValue>
-                    </value>
-                </property>
-            </requirements>
-        </specification>
-        <specification name="TESTE do PARTOF" ifcVersion="IFC4X3_ADD2" identifier="xxxx" description="xx" instructions="xxx">
-            <applicability minOccurs="1" maxOccurs="unbounded">
-                <entity>
-                    <name>
-                        <simpleValue>IFCSPACE</simpleValue>
-                    </name>
-                </entity>
-                <partOf relation="IFCRELAGGREGATES">
-                    <entity>
-                        <name>
-                            <simpleValue>IFCZONE</simpleValue>
-                        </name>
-                    </entity>
-                </partOf>
-            </applicability>
-            <requirements>
-                <entity instructions="Instrução do PARTOF TESTE">
-                    <name>
-                        <simpleValue>ifczone</simpleValue>
-                    </name>
-                </entity>
-                <attribute cardinality="required" instructions="Instrução do PARTOF TESTE">
-                    <name>
-                        <simpleValue>longName</simpleValue>
-                    </name>
-                    <value>
-                        <xs:restriction base="xs:string">
-                            <xs:pattern value=".*(Sala|sala).*" />
-                        </xs:restriction>
-                    </value>
-                </attribute>
                 <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito existente">
                     <propertySet>
                         <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
@@ -225,6 +141,33 @@
                         <simpleValue>2.55</simpleValue>
                     </value>
                 </property>
+            </requirements>
+        </specification>
+        <specification name="Pé-direito mínimo 2,30m (cômodos em geral)" ifcVersion="IFC4X3_ADD2" identifier="IDS014.2" description="Pé-direito mínimo 2,30m" instructions="Pé-direito mínimo 2,30m">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <simpleValue>.*([Bb]anheiro|[Ww][Cc]|[Ll]avabo|[Ss]anit[áa]rio).*"</simpleValue>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito existente">
+                    <propertySet>
+                        <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>FinishCeilingHeight</simpleValue>
+                    </baseName>
+                </property>
                 <property dataType="IFCQUANTITYLENGTH" cardinality="required" instructions="Pé-direito mínimo 2,30m (banheiros)">
                     <propertySet>
                         <simpleValue>Qto_SpaceBaseQuantities</simpleValue>
@@ -234,6 +177,276 @@
                     </baseName>
                     <value>
                         <simpleValue>2.3</simpleValue>
+                    </value>
+                </property>
+            </requirements>
+        </specification>
+        <specification name="TESTE do PARTOF Casa Sala" ifcVersion="IFC4X3_ADD2" identifier="IDS014.3" description="programa casa sala" instructions="TESTE do PARTOF Casa">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IFCZONE</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*(Casa|Residência unifamiliar|Habitação unifamiliar|Moradia unifamiliar|Unidade habitacional).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <entity instructions="Programa de necessidades Casa">
+                    <name>
+                        <simpleValue>IfcSpace</simpleValue>
+                    </name>
+                </entity>
+                <attribute cardinality="required" instructions="Programa de necessidades Casa">
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Ss]ala|[Ss]ala de [Ee]star).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="TESTE do PARTOF Casa Casal" ifcVersion="IFC4X3_ADD2" identifier="IDS014.3" description="programa casa" instructions="TESTE do PARTOF Casa">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IFCZONE</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*(Casa|Residência unifamiliar|Habitação unifamiliar|Moradia unifamiliar|Unidade habitacional).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <entity instructions="Programa de necessidades Casa">
+                    <name>
+                        <simpleValue>IfcSpace</simpleValue>
+                    </name>
+                </entity>
+                <attribute cardinality="required" instructions="Programa de necessidades Casa">
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Dd]ormit[óo]rio de  [Cc]asal|[Qq]uarto de [Cc]asal|[Cc]asal|[Ss]u[íi]te).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="TESTE do PARTOF apto bnho" ifcVersion="IFC4X3_ADD2" identifier="IDS014.4" description="programa apto" instructions="TESTE do PARTOF apto">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IFCZONE</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Aa]partamento|[Cc]asa [Ss]obreposta|[Uu]nidade [Aa]ut[oô]noma|[Mm]ultifamiliar).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <entity instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>IfcSpace</simpleValue>
+                    </name>
+                </entity>
+                <attribute cardinality="required" instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Bb]anheiro|[Ww][Cc]).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="TESTE do PARTOF apto sala" ifcVersion="IFC4X3_ADD2" identifier="IDS014.4" description="programa apto" instructions="TESTE do PARTOF apto">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IFCZONE</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Aa]partamento|[Cc]asa [Ss]obreposta|[Uu]nidade [Aa]ut[oô]noma|[Mm]ultifamiliar).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <entity instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>IfcSpace</simpleValue>
+                    </name>
+                </entity>
+                <attribute cardinality="required" instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Ss]ala|[Ss]ala de [Ee]star).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="TESTE do PARTOF apto casal" ifcVersion="IFC4X3_ADD2" identifier="IDS014.4" description="programa apto" instructions="TESTE do PARTOF apto">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IFCSPACE</simpleValue>
+                    </name>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IFCZONE</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Aa]partamento|[Cc]asa [Ss]obreposta|[Uu]nidade [Aa]ut[oô]noma|[Mm]ultifamiliar).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <entity instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>IfcSpace</simpleValue>
+                    </name>
+                </entity>
+                <attribute cardinality="required" instructions="Programa de necessidades apto">
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Dd]ormit[óo]rio de  [Cc]asal|[Qq]uarto de [Cc]asal|[Cc]asal|[Ss]u[íi]te).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </requirements>
+        </specification>
+        <specification name="Cama no Casa" ifcVersion="IFC4X3_ADD2">
+            <applicability minOccurs="1" maxOccurs="unbounded">
+                <entity>
+                    <name>
+                        <simpleValue>IfcFurniture</simpleValue>
+                    </name>
+                    <predefinedType>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value="bed" />
+                        </xs:restriction>
+                    </predefinedType>
+                </entity>
+                <partOf relation="IFCRELAGGREGATES">
+                    <entity>
+                        <name>
+                            <simpleValue>IfcSpace</simpleValue>
+                        </name>
+                    </entity>
+                </partOf>
+                <attribute>
+                    <name>
+                        <simpleValue>LongName</simpleValue>
+                    </name>
+                    <value>
+                        <xs:restriction base="xs:string">
+                            <xs:pattern value=".*([Qq]uarto de [Cc]asal|[Cc]asal|[Ss]u[íi]te).*" />
+                        </xs:restriction>
+                    </value>
+                </attribute>
+            </applicability>
+            <requirements>
+                <property dataType="IFCNONNEGATIVELENGTHMEASURE" cardinality="required" instructions="Dimensao cama casal">
+                    <propertySet>
+                        <simpleValue>Pset_FurnitureTypeCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalLength</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>1.40</simpleValue>
+                    </value>
+                </property>
+                <property dataType="IFCNONNEGATIVELENGTHMEASURE" cardinality="required" instructions="Dimensao cama casal">
+                    <propertySet>
+                        <simpleValue>Pset_FurnitureTypeCommon</simpleValue>
+                    </propertySet>
+                    <baseName>
+                        <simpleValue>NominalDepth</simpleValue>
+                    </baseName>
+                    <value>
+                        <simpleValue>1.90</simpleValue>
                     </value>
                 </property>
             </requirements>
